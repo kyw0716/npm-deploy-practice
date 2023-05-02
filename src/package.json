@@ -2,7 +2,7 @@
   "name": "woowacourse-scent-modal-sample",
   "version": "1.0.0",
   "description": "woowacourse npm deploy practice",
-  "main": "Modal.js",
+  "main": "Modal.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
