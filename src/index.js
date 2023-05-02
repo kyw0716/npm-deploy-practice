@@ -1,13 +1,29 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import React, { useState } from 'react';
+import './styles.css';
 
-import App from './App';
+const MyModal = ({ trigger, children }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
 
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <>
+      {React.cloneElement(trigger, { onClick: handleOpenModal })}
+      {isModalOpen && (
+        <div className="modal-overlay" onClick={handleCloseModal}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            {children}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default MyModal;
